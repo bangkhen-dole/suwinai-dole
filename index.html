@@ -1,30 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
-<title>ระบบลงชื่อเข้าเรียน ศรช.วัดศิริพงษ์ฯ</title>
-<base target="_top">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <link rel="icon" href="https://static.wixstatic.com/media/2a7302_5c96ebeae5a54decb22fd4e2c3da8ffe~mv2.png">
+    <title>ระบบลงชื่อเข้าเรียน ศรช.วัดศิริพงษ์ฯ</title>
+    <base target="_top">
+    <link rel="icon" href="https://static.wixstatic.com/media/2a7302_5c96ebeae5a54decb22fd4e2c3da8ffe~mv2.png">
+    
+    <style>
+        /* ตั้งค่าพื้นฐานของหน้าเว็บ */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'ChulaCharasNew', 'Sarabun', sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* แถบช่วยเหลือด้านบน (จะแสดงผลเผื่อกรณีบางเครื่องมีปัญหาการเชื่อมต่อ) */
+        .helper-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 45px;
+            background-color: #e65100; /* สีส้มเข้ม สังเกตง่าย */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            z-index: 9999999;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .helper-bar a {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-left: 10px;
+            font-weight: bold;
+            border: 1px solid #fff;
+            transition: 0.3s;
+        }
+
+        .helper-bar a:hover {
+            background-color: #fff;
+            color: #e65100;
+        }
+
+        /* ปรับแต่ง iframe ให้แสดงผลเต็มหน้าจอต่อจากแถบช่วยเหลือ */
+        .fullscreen-iframe {
+            position: fixed;
+            top: 45px; /* ขยับลงมาต่อจากแถบ helper-bar */
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: calc(100% - 45px); /* หักลบความสูงของแถบด้านบน */
+            border: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            z-index: 999998;
+            -webkit-overflow-scrolling: touch; /* เพิ่มความลื่นไหลในการเลื่อนหน้าจอบน iOS */
+        }
+    </style>
 </head>
+<body>
 
-<div align="center">
-<iframe src="https://script.google.com/macros/s/AKfycbwIHEjchxNNRSwCk0N24Tall8w4DAw9F9B9tuYT0cqV7Upg53d1Gj_D9PjNrlq0P_1BUA/exec" 
+    <!-- แถบแจ้งเตือนช่วยเหลือผู้ใช้งาน -->
+    <div class="helper-bar">
+        <span>หากหน้าจอไม่ขึ้น หรือระบบขึ้นปฏิเสธการเชื่อมต่อ</span>
+        <a href="https://script.google.com/macros/s/AKfycbwIHEjchxNNRSwCk0N24Tall8w4DAw9F9B9tuYT0cqV7Upg53d1Gj_D9PjNrlq0P_1BUA/exec" target="_blank">
+            คลิกเปิดตรงนี้ ↗
+        </a>
+    </div>
 
-style="
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-    right: 0px;
-    width: 100%;
-    border: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    z-index: 999999;
-    height: 100%;
-  "></iframe>
+    <!-- ดึงหน้าจอระบบลงชื่อเรียนมาแสดงผล -->
+    <iframe 
+        src="https://script.google.com/macros/s/AKfycbwIHEjchxNNRSwCk0N24Tall8w4DAw9F9B9tuYT0cqV7Upg53d1Gj_D9PjNrlq0P_1BUA/exec" 
+        class="fullscreen-iframe"
+        allow="geolocation; microphone; camera"
+        loading="lazy">
+    </iframe>
 
-<div>
 </body>
 </html>
